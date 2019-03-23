@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laver.bookstore.mapper.DonateMapper">
+    <resultMap id="BaseResultMap" type="com.laver.bookstore.domain.Donate">
+        <id column="bid" property="bid" jdbcType="INTEGER"/>
+        <result column="banme" property="banme" jdbcType="VARCHAR"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="VARCHAR"/>
+        <result column="writer" property="writer" jdbcType="VARCHAR"/>
+        <result column="printer" property="printer" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+        <result column="donater" property="donater" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.laver.bookstore.domain.Donate">
+        insert into donatebook(bid,bname,detail,price,writer,printer,date,type,image,donater)
+        values (#{bid,jdbcType=INTEGER}, #{bname,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR},
+      #{price,jdbcType=VARCHAR}, #{writer,jdbcType=VARCHAR}, #{printer,jdbcType=VARCHAR},
+      #{date,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{donater,jdbcType=VARCHAR})
+    </insert>
+    <select id="findAllBook" resultMap="BaseResultMap" parameterType="com.laver.bookstore.domain.Donate">
+        select *
+        from donatebook
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select *
+        from donatebook
+        where bid = #{bid,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>
